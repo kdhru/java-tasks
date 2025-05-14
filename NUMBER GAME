@@ -1,0 +1,32 @@
+import java.util.Random;
+import java.util.*;
+public class randomnu {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Random rn=new Random();
+		int boundrandom=rn.nextInt(100);
+		System.out.println(boundrandom);
+		for(int i=10;i>=0;i--) {
+			if (i==0) {
+				System.out.println("game over");
+				break;
+			}
+			System.out.println("You have ->"+i+"<- attempt to guess the number");
+			System.out.println("Guess the generated number");			
+			int as=sc.nextInt();
+			if(boundrandom < as) {
+				System.out.println("The guessed number is high");
+			}else if(boundrandom > as) {
+				System.out.println("the guessed number is low");
+			}
+			else if(boundrandom == as){
+				System.out.println("You Win");
+				System.out.println("your score is "+i);	
+				break;
+			}else
+				System.out.println("Guessed number is not correct");
+				continue;
+		}
+	}
+}
