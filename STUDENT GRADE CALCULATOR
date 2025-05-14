@@ -1,0 +1,52 @@
+import java.util.*;
+
+class MarkInput {
+    public int getValidMark(Scanner sc, String subjectName) {
+        int mark = -1;
+        while (true) {
+            try {
+                System.out.println("Enter the " + subjectName + " marks:");
+                mark = sc.nextInt();
+                if (mark >= 0 && mark <= 100) {
+                    break;
+                } else {
+                    System.out.println("Invalid input! Marks must be between 0 and 100.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter an integer.");
+                sc.next();
+            }
+        }
+        return mark;
+    }
+}
+
+public class SGCALC extends MarkInput {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        SGCALC obj = new SGCALC();
+
+        int ph = obj.getValidMark(sc, "Physics");
+        int by = obj.getValidMark(sc, "Biology");
+        int ch = obj.getValidMark(sc, "Chemistry");
+        int mh = obj.getValidMark(sc, "Mathematics");
+        int en = obj.getValidMark(sc, "English");
+        int hin = obj.getValidMark(sc, "Hindi");
+
+        int totmar = ph + by + ch + mh + en + hin;
+        System.out.println("The total number of marks is: " + totmar);
+
+        double totper = totmar / 6.0;
+        System.out.println("The average percentage is: " + totper + "%");
+
+        if (totper >= 90) {
+            System.out.println("Excellent");
+        } else if (totper > 70) {
+            System.out.println("Very Good");
+        } else if (totper > 60) {
+            System.out.println("Fair");
+        } else {
+            System.out.println("You failed");
+        }
+    }
+}
